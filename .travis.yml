@@ -1,0 +1,14 @@
+sudo:  required
+
+# use of docker 
+
+services: 
+   -  docker
+# build docker image
+
+before_install:
+  -  docker build -t saidizied/docker-react -f Dockerfile.dev . 
+
+# tests
+script: 
+ -  docker run saidizied/docker-react npm run test -- --coverage
